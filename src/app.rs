@@ -5,7 +5,7 @@ use leptos_router::{
     StaticSegment,
 };
 
-use crate::{layouts, views};
+use crate::{config_provider::ConfigProvider, layouts, views};
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
@@ -36,18 +36,24 @@ pub fn App() -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/sales-inventory.css" />
 
         // sets the document title
-        <Title text="Welcome to Alfio's Inventory" />
+        <Title text="Alfoi's Inventory" />
 
         // content for this welcome page
-        <Router>
-            <main class="min-h-screen">
-                <Routes fallback=views::NotFoundView>
-                    <Route path=StaticSegment("") view=views::LoginView />
-                    <ParentRoute path=StaticSegment("home") view=layouts::MainLayout>
-                        <Route path=StaticSegment("") view=views::alf::DashboardALF />
-                    </ParentRoute>
-                </Routes>
-            </main>
-        </Router>
+        <ConfigProvider>
+            <Router>
+                <main class="min-h-screen">
+                    <Routes fallback=views::NotFoundView>
+                        <Route path=StaticSegment("") view=views::LoginView />
+                        <ParentRoute path=StaticSegment("sales") view=layouts::MainLayout>
+                            <Route path=StaticSegment("") view=views::alf::DashboardALF />
+                            <Route
+                                path=StaticSegment("create")
+                                view=views::alf::sales::SalesCreateView
+                            />
+                        </ParentRoute>
+                    </Routes>
+                </main>
+            </Router>
+        </ConfigProvider>
     }
 }
