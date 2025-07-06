@@ -1,7 +1,9 @@
+pub mod api;
 pub mod app;
 pub mod callback;
 pub mod config_provider;
 pub mod layouts;
+pub mod lib_crate;
 pub mod views;
 
 #[cfg(feature = "hydrate")]

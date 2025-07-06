@@ -1,4 +1,3 @@
-
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
@@ -7,6 +6,12 @@ async fn main() {
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use sales_inventory::app::*;
+
+    tracing_subscriber::fmt()
+        .without_time() // For early local development.
+        .with_target(false)
+        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
+        .init();
 
     let conf = get_configuration(None).unwrap();
     let addr = conf.leptos_options.site_addr;

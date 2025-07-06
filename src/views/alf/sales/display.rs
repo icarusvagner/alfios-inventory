@@ -32,13 +32,10 @@ pub fn SalesDisplayView() -> impl IntoView {
                     view! {
                         <button
                             on:click=on_click
-                            class="bg-blue-500 flex items-center gap-2 outline-none px-5 py-2 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-stone-100 cursor-pointer duration-200 ease-in-out group"
+                            class="bg-blue-500 flex items-center gap-2 outline-none px-5 py-2 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 text-stone-100 cursor-pointer duration-200 ease-in-out hover:scale-95"
                         >
                             "Create your first sale"
-                            <Icon
-                                icon=icondata::BsArrowRight
-                                attr:class="h-4 w-4 group-hover:translate-x-1"
-                            />
+                            <Icon icon=icondata::BsArrowRight attr:class="h-4 w-4" />
                         </button>
                     }
                         .into_any()
